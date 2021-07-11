@@ -5,6 +5,9 @@ import json
 from datetime import datetime
 import os
 import math
+import pymysql
+pymysql.version_info = (1, 3, 13, "final", 0)
+pymysql.install_as_MySQLdb()
 
 from werkzeug.utils import redirect, secure_filename
 
