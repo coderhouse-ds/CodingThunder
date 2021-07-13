@@ -49,7 +49,6 @@ class Posts(db.Model):
     slug = db.Column(db.String(21), nullable=False)
     content = db.Column(db.String(200), nullable=False)
     tagline = db.Column(db.String(50), nullable=False)
-    category = db.Column(db.String(20), nullable=False)
     date = datetime.now()
 
 
@@ -81,10 +80,6 @@ def home():
     # print(post)
     return render_template('index.html', params=params,posts=posts,prev=prev,next=next)
 
-@app.route("/contact/tech",methods=['GET'])
-def tech():
-    posts = Posts.query.filter(Posts.category=="tech").all()
-    return render_template('blogs.html',params=params,posts=posts)
 @app.route("/post/<string:post_slug>", methods=['GET'])
 def post_route(post_slug):
     post = Posts.query.filter_by(slug=post_slug).first()
